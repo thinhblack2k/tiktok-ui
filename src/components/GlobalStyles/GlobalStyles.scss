@@ -30,9 +30,9 @@ body {
 
 input, button, [tabindex] {
     outline: none;
+    border: none;
 }
 
 a[href] {
-    color: var(--text-color);
     text-decoration: none;
 }

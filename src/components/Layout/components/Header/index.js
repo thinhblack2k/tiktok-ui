@@ -1,14 +1,13 @@
-import { useEffect, useState } from 'react';
+import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark, faMagnifyingGlass, faSpinner } from '@fortawesome/free-solid-svg-icons';
-import classNames from 'classnames/bind';
-import Tippy from '@tippyjs/react/headless'; // different import path!
-
-import { Wrapper as PopperWrapper } from '~/components/Popper';
-import Button from '~/components/Button';
 import styles from './Header.module.scss';
 import images from '~/assets/images';
+import Tippy from '@tippyjs/react/headless';
+import { useEffect, useState } from 'react';
+import { Wrapper as PopperWrapper } from '~/components/Popper';
 import AccountItem from '~/components/AccountItem';
+import Button from '~/components/Button';
 
 const cx = classNames.bind(styles);
 
@@ -19,7 +18,7 @@ function Header() {
         setTimeout(() => {
             setSearchResult([]);
         }, 0);
-    }, []);
+    });
 
     return (
         <header className={cx('wrapper')}>
@@ -28,12 +27,12 @@ function Header() {
                     <img src={images.logo} alt="tiktok" />
                 </div>
                 <Tippy
-                    interactive
                     visible={searchResult.length > 0}
+                    interactive
                     render={(attrs) => (
                         <div className={cx('search-result')} tabIndex="-1" {...attrs}>
                             <PopperWrapper>
-                                <h4 className={cx('search-title')}>Accounts</h4>
+                                <h4 className={cx('search-title')}>Account</h4>
                                 <AccountItem />
                                 <AccountItem />
                                 <AccountItem />
@@ -53,9 +52,27 @@ function Header() {
                     </div>
                 </Tippy>
                 <div className={cx('actions')}>
-                    <Button primary >
-                        Login
+                    <Button text to="/upload">
+                        Upload
                     </Button>
+                    <Button primary href="https://fullstack.edu.vn/" onClick={() => alert('Clicked!')} target="_blank">
+                        Log in
+                    </Button>
+                    <Tippy
+                        visible
+                        interactive
+                        render={(attrs) => (
+                            <div className={cx('search-result')} tabIndex="-1" {...attrs}>
+                                Kết quả
+                            </div>
+                        )}
+                    >
+                        <div className={cx('action-btn')}>
+                            <Button rounded>
+                                Tải Xuống
+                            </Button>
+                        </div>
+                    </Tippy>
                 </div>
             </div>
         </header>
