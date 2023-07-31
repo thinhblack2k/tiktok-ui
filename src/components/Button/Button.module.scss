@@ -10,6 +10,8 @@
     border: solid 1px transparent;
     cursor: pointer;
     user-select: none;
+    background-color: var(--white);
+    color: var(--black);
 
     + .wrapper {
         margin-left: 16px;
@@ -24,6 +26,12 @@
 .icon + .title,
 .title + .icon {
     margin-left: 8px;
+}
+
+.icon {
+    display: inline-block;
+    width: 24px;
+    text-align: center;
 }
 
 // Button type
@@ -84,4 +92,9 @@
 .large {
     min-width: 140px;
     padding: 14px 16px;
+}
+
+//Menu
+.menu-items {
+    width: 224px;
 }
